@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Modal from 'react-modal';
+import Calendar from './Components/Calendar'
+import Login from '../src/Components/Login'
+import ProtectedRoute from './ProtectedRoute'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  BrowserRouter,
 
+} from "react-router-dom";
+
+
+Modal.setAppElement('#root')
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path='/' component={Login} />
+        <ProtectedRoute exact path='/Calendar' component={Calendar} />
+      </Switch>
+    </Router>
   );
 }
 
